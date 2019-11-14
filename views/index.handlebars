@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center" id="tittle">
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<h1 class="display-4">Burger Fest!</h1>
+					<p class="lead">All you can eat burgers. Simply add any burger, then eat it!
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 text-center" id="Available">
+			<h3>Available Burgers</h3>
+		</div>
+		<div class="col-md-6 text-center" id="Eaten">
+			<h3>Eaten Burgers</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7 text-center" class="task">
+			<div class="row">
+				{{#each burgerInfo}}
+				{{#unless this.devoured}}
+				<div class="col-md-9 text-center">
+					<h4 class="form-control" type="text">{{this.id}}. {{this.burger_name}}
+					</h4>
+				</div>
+				<div class="col-md-3 text-center">
+					<form class="devour-form button-size">
+						<input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
+						<button type="submit" class="btn btn-default ">EAT IT NOW!</button>
+					</form>
+				</div>
+				{{/unless}}
+				{{/each}}
+			</div>
+		</div>
+		<div class="col-md-5 text-center" class="task">
+			{{#each burgerInfo}}
+			{{#if this.devoured}}
+			<h4 class="form-control" type="text">{{this.id}} . {{this.burger_name}}</h4>
+			{{/if}}
+			{{/each}}
+		</div>
+	</div>
+<br>
+	<div class="row">
+		<div class="col-md-12 text-center enter_section">
+			<form action="/burger/add" method="POST">
+				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<br>
+				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+			</form>
+			<p>Enter a burger you want to eat Click the "Submit" button.</p>
+		</div>
+	</div>
+</div>
