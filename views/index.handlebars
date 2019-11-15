@@ -1,39 +1,46 @@
 <div class="container">
+
+	{{!-- Title Jumbotron --}}
+
 	<div class="row">
 		<div class="col-md-12 text-center" id="tittle">
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container">
-					<h1 class="display-4">Burger Fest!</h1>
-					<p class="lead">All you can eat burgers. Simply add any burger, then eat it!
+					<h1 class="display-4 titleFont">Burger Fest!</h1>
+					<p class="lead titleFont">All you can eat burgers. Simply add any burger, then eat it!
 					</p>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	{{!-- Available/Eaten --}}
+
 	<div class="row">
-		<div class="col-md-6 text-center" id="Available">
-			<h3>Available</h3>
+		<div class="col-md-6 text-center">
+			<h3 id="available">Available</h3>
 		</div>
-		<div class="col-md-1 text-center" id="Eaten">
-		
-		</div>
-		<div class="col-md-5 text-center" id="Eaten">
-			<h3>Eaten</h3>
+		<div class="col-md-6 text-center">
+			<h3 id="eaten">Eaten</h3>
 		</div>
 	</div>
+
+
+	<hr id="lineBreak">
+	{{!-- Burgers Begin! --}}
+
 	<div class="row">
 		<div class="col-md-7 text-center" class="task">
 			<div class="row">
 				{{#each burgerInfo}}
 				{{#unless this.devoured}}
 				<div class="col-md-9 text-center">
-					<h4 class="form-control" type="text">{{this.id}}. {{this.burger_name}}
-					</h4>
+					<h4 class="form-control" type="text">{{this.burger_name}}</h4>
 				</div>
 				<div class="col-md-3 text-center">
-					<form class="devour-form button-size">
+					<form class="eatItNow button-size">
 						<input input type="hidden" class="burger_id" type="text" value={{this.id}}><br>
-						<button type="submit" class="btn btn-default ">EAT IT NOW!</button>
+						<button type="submit" class="btn btn-danger">EAT IT NOW!</button>
 					</form>
 				</div>
 				{{/unless}}
@@ -43,20 +50,28 @@
 		<div class="col-md-5 text-center" class="task">
 			{{#each burgerInfo}}
 			{{#if this.devoured}}
-			<h4 class="form-control" type="text">{{this.id}} . {{this.burger_name}}</h4>
+			<h4 class="form-control" type="text">{{this.burger_name}}</h4>
 			{{/if}}
 			{{/each}}
 		</div>
 	</div>
-<br>
+
+	<br>
+	{{!-- Add a Burger --}}
+
 	<div class="row">
 		<div class="col-md-12 text-center enter_section">
 			<form action="/burger/add" method="POST">
-				<input type="text" class="form-control" name="burger_name" value="" id="enter_text">
+				<p id="addnew"> Add a new Burger! Any Burger!</p>
+				<input type="text" class="form-control" name="burger_name" placeholder="Enter Burger Name Here">
+
 				<br>
-				<button type="submit" class="btn btn-primary" id="text-enter-button">Submit</button>
+				{{!-- <button type="submit" class="btn btn-primary" id="text-enter-button addIt">Add It</button> --}}
+				<button type="submit" class="btn btn-danger" id="addIt">Add It</button>
 			</form>
-			<p>Enter a burger you want to eat Click the "Submit" button.</p>
 		</div>
 	</div>
+
 </div>
+
+<footer class="footer"></footer>
