@@ -15,4 +15,4 @@ Burger is an app which allows you to create any burger you desire. After creatin
  * Bootstrap 
  * CSS
 
-[Check it out!](https://kevinperez1996.github.io/Click-Game/)
+[Check it out!](https://still-escarpment-18133.herokuapp.com/burger)
